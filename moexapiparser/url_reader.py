@@ -1,7 +1,7 @@
 import pandas as pd
 import certifi
 import requests
-import moex_functions as mfunc
+import moexapiparser.moex_functions as mfunc
 
 def read_url(url: str,
             session = requests.Session(),

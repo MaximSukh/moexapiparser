@@ -5,9 +5,9 @@ import datetime as dt
 from zipfile import ZipFile
 from io import BytesIO
 
-import moex_functions as mfunc
+import moexapiparser.moex_functions as mfunc
 
-from url_reader import read_url, read_url_loop, url_processed, loop_processed
+from moexapiparser.url_reader import read_url, read_url_loop, url_processed, loop_processed
 
 urls = {'description': 'https://iss.moex.com/iss/securities/%(ticker)s',
         'securities' : 'https://iss.moex.com/iss/securities',
