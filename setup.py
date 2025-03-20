@@ -13,7 +13,6 @@ setup(
     author='Sukhanov_Maxim',
     author_email='mssukhanov@gmail.com',
     packages=find_packages(),
-    package_dir={'': 'src'},
     keywords='moex api parser ',
     install_requires=[
         'pandas',
