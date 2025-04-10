@@ -491,7 +491,7 @@ class Moex:
         except:
             return pd.DataFrame()        
     
-    def find_ticker(self, type: str = None):
+    def find_ticker(self, is_traded = True, type: str = None):
         """
         Finds and returns ticker information from the MOEX ISS API.
         Args:
@@ -510,10 +510,12 @@ class Moex:
                 'search_ticker' : self.ticker}
             url = 'https://iss.moex.com/iss/securities' + '.json'
             df = url_processed(url, **kwargs)
+            if is_traded:
+                df = df[df['is_traded'] == 1]   
             if type in ['share', 'bond', 'index', 'future']:
-                return df[df['group'].str.contains(type)].loc[df['is_traded'] == 1].sort_values(by='shortname')
+                return df[df['group'].str.contains(type)].sort_values(by='shortname')
             else:
-                return df.loc[df['is_traded'] == 1].sort_values(by='shortname')
+                return df.sort_values(by='shortname')
         except: 
             return None       
 
