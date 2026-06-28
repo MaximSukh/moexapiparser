@@ -272,10 +272,10 @@ class Moex:
         else:
             data = self._parse_history_results(date_from = (pd.to_datetime(date) - dt.timedelta(days=30)).date(),
                                                 date_to = pd.to_datetime(date).date())
-            if len(data) > 0:
-                data = data.iloc[-1]
-            else:
-                return []
+        if len(data) > 0:
+            data = data.iloc[-1]
+        else:
+            return None
         data.rename(index={'CLOSE' : 'LAST_1',
                             'LCURRENTPRICE' : 'LAST_2',
                             'LEGALCLOSEPRICE' : 'LAST_3'}, inplace=True, errors='ignore')
