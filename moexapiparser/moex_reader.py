@@ -339,6 +339,8 @@ class Moex:
         'table': 'coupons'}
         url = urls['bondization'] + '.json'
         df = url_processed(url, **kwargs)
+        if len(df) == 0:
+            return None
         # костыль для ошибок данных ММВБ когда есть строки с несуществующими купонами
         df['valueprc'] = df.apply(lambda x: round(x['value'] / x.facevalue * (365 / (x.coupondate - x.startdate).days), 4) * 100
         if pd.isnull(x.valueprc) == True and pd.isnull(x.value) == False else x.valueprc, axis=1)
